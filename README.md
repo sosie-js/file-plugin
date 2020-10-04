@@ -1,10 +1,12 @@
 ![](https://badgen.net/badge/SoS正/0.7.0/f2a) ![](https://badgen.net/badge/editor.js/v2.1.8/blue) ![](https://badgen.net/badge/plugin/v1.0.0/orange) 
 
-# File Plugin bring Open/save facilities to editor.js
+# File Plugin bring Clear, load Url, Open/save local file facilities to editor.js
+
+![](file-panel.png)
 
 ## Feature(s)
 
-### Embed init helper
+### File init helper
 
 Provides File.init() to initialise File plugin just after editor isready.
 
