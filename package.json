@@ -1,0 +1,31 @@
+{
+  "name": "@sosie-js/file-plugin",
+  "version": "1.0.0",
+  "keywords": [
+    "sosie",
+    "file-plugin",
+    "sosiejs"
+  ],
+  "description": "File plugin for SoSIE.js",
+  "license": "MIT",
+  "repository": "https://github.com/sosie-js/file-plugin",
+  "main": "./dist/bundle.js",
+  "scripts": {
+    "build": "rimraf dist/*;cp src/downloadjs/download.min.js dist/; cp src/file-saver/dist/FileSaver.min.js* dist/;node --unhandled-rejections=strict minify.js;yarn corsget",
+    "install_modules": "git submodule add  https://github.com/rndme/download src/downloadjs;git submodule add https://github.com/eligrey/FileSaver.js src/file-saver;",
+    "corsget": "node ./tasks/download.js",
+    "lint": "eslint src/ --ext .js",
+    "lint:errors": "eslint src/ --ext .js --quiet",
+    "lint:fix": "eslint src/ --ext .js --fix",
+    "lint:init": "eslint src/ --ext .js --init"
+  },
+  "author": {
+    "name": "sosie",
+    "email": "sosie@sos-productions.com"
+  },
+  "dependencies": {
+    "@node-minify/core": "^6.0.0",
+    "@node-minify/terser": "^6.0.0",
+    "rimraf": "^3.0.2"
+  }
+}

@@ -4,7 +4,7 @@
 
 ## Feature(s)
 
-### Embed init helper
+### File init helper
 
 Provides File.init() to initialise File plugin just after editor isready.
 
