@@ -27,7 +27,7 @@ Add a line in  either your example.html, after the script-loader line in the loa
         */
          await loadPlugins([
             {'sosie-js/script-loader@3.0.0': '[example/plugins/script-loader](https://github.com/sosie-js/script-loader)'}, //virtual , already loaded we keep a version trace here
-            {'sosie-js/file-plugin@1.0.0': ['[example/plugins/file-plugin](https://github.com/sosie-js/file-plugin)',['dist/bundle.js','dist/sample.js']]},
+            {'sosie-js/file-plugin@1.1.0': ['[example/plugins/file-plugin](https://github.com/sosie-js/file-plugin)',['dist/bundle.js','dist/sample.js']]},
         ],nocache,mode,target);
 ```
 
