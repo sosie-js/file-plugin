@@ -195,7 +195,8 @@ function openFileHandler(evt) {
                         var json=e.target.result;
                         var jsondata=JSON.parse(json);
                         window.loadJS(jsondata);
-                        
+                        //.save does not trigger Editor.isRead
+                        //if(refreshBlocksStatusPanel) refreshBlocksStatusPanel();
                     } catch(error) {
                         if (error instanceof SyntaxError) {
                             printError(error, true);
