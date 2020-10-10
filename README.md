@@ -14,9 +14,6 @@ Provides File.init() to initialise File plugin just after editor isready.
 
 This script will add 3 nice Fa icons buttons Clear(or open Url), Open and Save on SoSIE's Menubar for you,
 
-```js
-
-```
 ## Integration
 
 Add a line in  either your example.html, after the script-loader line in the loadPlugins section
