@@ -2,8 +2,6 @@
 
 # File Plugin bring Clear, load Url, Open/save local file facilities to editor.js
 
-![](file-panel.png)
-
 ## Feature(s)
 
 ### File init helper
@@ -11,6 +9,8 @@
 Provides File.init() to initialise File plugin just after editor isready.
 
 ### sample script
+
+![](file-panel.png)
 
 This script will add 3 nice Fa icons buttons Clear(or open Url), Open and Save on SoSIE's Menubar for you,
 
