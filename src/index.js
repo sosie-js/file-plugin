@@ -1,12 +1,17 @@
-/**
+/*!
 * File managing
-*
+* 
+* @version 1.2.0
+* @package https://github.com/sosie-js/file-plugin
+**/
+
+/**
 * @Note this has to be triggered after await editor.isReady.
 * @author sos-productions.com
-* @version 2.0
 * @history
-*    1.0 (03.10.2020) - Initial version from SoSIE
-*    2.0 (04.10.2020) - getFilePluginDir
+*    1.0.0 (03.10.2020) - Initial version from SoSIE
+*    1.1.0 (04.10.2020) - getFilePluginDir
+*    1.2.0 (23.10.2020) - Version
 * @property {Object} editor - Editor.js API 
 */
 
