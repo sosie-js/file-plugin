@@ -1,6 +1,8 @@
 [submodule "src/downloadjs"]
 	path = src/downloadjs
 	url = https://github.com/rndme/download
+	branch = master
 [submodule "src/file-saver"]
 	path = src/file-saver
-	url = https://github.com/eligrey/FileSaver.js
+	url = https://github.com/ChenWenBrian/FileSaver.js
+	branch = master
