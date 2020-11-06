@@ -1,6 +1,6 @@
 {
   "name": "@sosie-js/file-plugin",
-  "version": "1.2.0",
+  "version": "2.0.0",
   "keywords": [
     "sosie",
     "file-plugin",
@@ -11,8 +11,10 @@
   "repository": "https://github.com/sosie-js/file-plugin",
   "main": "./dist/bundle.js",
   "scripts": {
-    "build": "rimraf dist/*;cp src/downloadjs/download.min.js dist/; cp src/file-saver/dist/FileSaver.min.js* dist/;node --unhandled-rejections=strict minify.js;yarn corsget",
-    "install_modules": "git submodule add  https://github.com/rndme/download src/downloadjs;git submodule add https://github.com/eligrey/FileSaver.js src/file-saver;",
+    "build": "rimraf dist/*;yarn install_modules;yarn corsget;node minify.js;webpack --mode production",
+    "build:dev": "webpack --mode development --watch",
+    "install_modules": "git submodule update --init --remote src/file-saver/ ; git submodule update --init --remote src/downloadjs/",
+    "uninstall_modules": "git submodule deinit -f --all",
     "corsget": "node ./tasks/download.js",
     "lint": "eslint src/ --ext .js",
     "lint:errors": "eslint src/ --ext .js --quiet",
@@ -27,5 +29,12 @@
     "@node-minify/core": "^6.0.0",
     "@node-minify/terser": "^6.0.0",
     "rimraf": "^3.0.2"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.12.3",
+    "@babel/preset-env": "^7.12.1",
+    "babel-loader": "^8.1.0",
+    "webpack": "^5.4.0",
+    "webpack-cli": "^4.2.0"
   }
 }

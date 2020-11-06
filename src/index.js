@@ -1,7 +1,7 @@
 /*!
 * File managing
 * 
-* @version 1.2.0
+* @version 2.0.0
 * @package https://github.com/sosie-js/file-plugin
 **/
 
@@ -11,10 +11,18 @@
 * @history
 *    1.0.0 (03.10.2020) - Initial version from SoSIE
 *    1.1.0 (04.10.2020) - getFilePluginDir
-*    1.2.0 (23.10.2020) - Version
+*    1.2.0 (23.10.2020) - Version and submodules
+*    2.0.0 (06.11.2020) -  webpack integration
 * @property {Object} editor - Editor.js API 
 */
 
+// The one and only way of getting global scope in all environments
+// https://stackoverflow.com/q/3277182/1008999
+var _global = typeof window === 'object' && window.window === window
+  ? window : typeof self === 'object' && self.self === self
+  ? self : typeof global === 'object' && global.global === global
+  ? global
+  : this
 
 /**
  * last opened File name
@@ -28,7 +36,7 @@ var currentFile='sosie_file.json';
  * 
  * @return {String}
  **/ 
-function getCurrentFile() {
+_global.getCurrentFile = function() {
     return currentFile;
 }
 
@@ -49,6 +57,8 @@ function getFilePluginDir() {
  */
 File.init = function (editor) {
     
+   /* if(!window.hasOwnProperty('download')&&!window.hasOwnProperty('saveAs')) {
+  
      var mode='prod'
      var source='local';//Works only with local stored dists as we decided not to publish on npm
      var nocache=false;
@@ -56,17 +66,22 @@ File.init = function (editor) {
      console.log('File plugin found in '+pluginDir);
      target=source+':'+pluginDir;
     
-     if(window.hasOwnProperty('loadEditor')) {
-        (async () => {
-            await loadEditor([
-                {'downloadjs@latest':['[src/downloadjs](https://github.com/rndme/download)','../../dist/download.min.js']},
-                {'file-saver@latest':['[src/file-saver](https://github.com/eligrey/FileSaver.js)','../../dist/FileSaver.min.js']
-                }],nocache,mode,target) 
-        })();
-        console.log('File plugin initialized ');
-     } else {
-        alert('You need to load sosie-js/script-loader version 2.3.+ available on github');
-     }
+        if(window.hasOwnProperty('loadEditor')) {
+            (async () => {
+                await loadEditor([
+                    {'downloadjs@latest':['[src/downloadjs](https://github.com/rndme/download)','../../dist/download.min.js']},
+                    {'file-saver@latest':['[src/file-saver](https://github.com/eligrey/FileSaver.js)','../../dist/FileSaver.min.js']
+                    }],nocache,mode,target) 
+            })();
+            console.log('File plugin initialized ');
+        } else {
+            alert('You need to load sosie-js/script-loader version 4.3.+ available on github');
+        }
+     } else {*/
+       //Webpack mode
+       require('./downloadjs/download.min.js');
+       require('./file-saver/dist/FileSaver.min.js');
+     //}
 }
 
 /**
@@ -76,7 +91,7 @@ File.init = function (editor) {
  * @param {String} name - Name of the file
  * @param {Obhject} options - holds compact (true for pretty format) and method (fielsaver or download-js)
  */
-function downloadJSON(data, name, options) {
+_global.downloadJSON = function(data, name, options) {
             
     // Create a blob of the data because json data may contain invalid chars to be transmitted directly making JSON.parse crashing
     
@@ -104,7 +119,7 @@ function downloadJSON(data, name, options) {
  * 
  * @param {Object} editor - Editor.js API 
  */
-function clearOrOpenUrl(editor) {
+_global.clearOrOpenUrl = function(editor) {
     
     var url=prompt('Clear the editor(content will be lost using this url) ?','about:blank');
     
@@ -169,7 +184,7 @@ function clearOrOpenUrl(editor) {
  * 
  * @param Event - evt Click Event front input type file
  **/
-function openFileHandler(evt) {
+_global.openFileHandler = function(evt) {
                     
     //limit the types of files that can be uploaded to only those specified by the input's accept attribute; compare the whole string of the extension, without case-sensitivty
     var $changed_input = this,
@@ -222,12 +237,15 @@ function openFileHandler(evt) {
  * 
  * @param {Object} editor - Editor.js API 
  */
-function saveFileInLocal(editor) {
+_global.saveFileInLocal = function (editor) {
     editor.save(true).then((savedData) => {
         let name=getCurrentFile();
         downloadJSON(savedData,name,{method:'filesaver',compact:false});
     });
 }
+
+
+
 
 //Register so SoSIE will autoinit.    
 SoSIE.register('File');

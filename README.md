@@ -1,6 +1,11 @@
-![](https://badgen.net/badge/SoS正/0.8.0/f2a) ![](https://badgen.net/badge/editor.js/v2.1.9/blue) ![](https://badgen.net/badge/plugin/v1.2.0/orange) 
+![](https://badgen.net/badge/SoS正/0.8.0/f2a) ![](https://badgen.net/badge/editor.js/v2.19.0/blue) ![](https://badgen.net/badge/plugin/v2.0.0/orange) 
 
 # File Plugin bring Clear, load Url, Open/save local file facilities to editor.js
+
+
+## What's new doc ?
+
+- Since 2.0.0 , build use webpack way but sample.js is still minified using node.
 
 ## Feature(s)
 

@@ -1,5 +1,5 @@
 Arguments: 
-  /usr/bin/node /usr/share/yarn/bin/yarn.js corsget
+  /usr/bin/node /usr/share/yarn/bin/yarn.js build
 
 PATH: 
   /usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games:/usr/local/sbin:/usr/sbin:/sbin
@@ -8,13 +8,13 @@ Yarn version:
   1.22.5
 
 Node version: 
-  12.18.4
+  12.19.0
 
 Platform: 
   linux x64
 
 Trace: 
-  SyntaxError: /var/www/sos-productions/sosie.sos-productions.com/editor.js/example/plugins/file-plugin/package.json: Unexpected string in JSON at position 785
+  SyntaxError: /var/www/sos-productions/sosie.sos-productions.com/editor.js/example/plugins/file-plugin/package.json: Unexpected string in JSON at position 443
       at JSON.parse (<anonymous>)
       at /usr/share/yarn/lib/cli.js:1625:59
       at Generator.next (<anonymous>)
@@ -24,7 +24,7 @@ Trace:
 npm manifest: 
   {
     "name": "@sosie-js/file-plugin",
-    "version": "1.0.0",
+    "version": "1.2.0",
     "keywords": [
       "sosie",
       "file-plugin",
@@ -35,9 +35,11 @@ npm manifest:
     "repository": "https://github.com/sosie-js/file-plugin",
     "main": "./dist/bundle.js",
     "scripts": {
-      "build": "rimraf dist/*;cp src/downloadjs/download.min.js dist/; cp src/file-saver/dist/FileSaver.min.js* dist/;node --unhandled-rejections=strict minify.js",
-      "install_modules": "git submodule add  https://github.com/rndme/download src/downloadjs;git submodule add https://github.com/eligrey/FileSaver.js src/file-saver",
-      "corsget": "wget https://gist.githubusercontent.com/sosie-js/0a0b4e683851dcc63aedec98de5ef996/raw/a573d27badf0b8ee58061de91099a8c9eb3b18db/corsget.php"
+      "build": "rimraf dist/*;yarn install_modules;yarn corsget;webpack --mode production",
+      "build:dev": "webpack --mode development --watch"
+      "install_modules": "git submodule update --init --remote src/file-saver/ ; git submodule update --init --remote src/downloadjs/",
+      "uninstall_modules": "git submodule deinit -f --all",
+      "corsget": "node ./tasks/download.js",
       "lint": "eslint src/ --ext .js",
       "lint:errors": "eslint src/ --ext .js --quiet",
       "lint:fix": "eslint src/ --ext .js --fix",
