@@ -8,12 +8,4 @@
  * @author SoSIE <https://sosie.sos-productions.com>
  * uses FileSaver.js By Eli Grey, http://eligrey.com
  * uses downloadjs v4.21, by dandavis; 2008-2018. [MIT]
- *   * /
  */
-
-/*!
-* File managing
-* 
-* @version 1.2.0
-* @package https://github.com/sosie-js/file-plugin
-**/

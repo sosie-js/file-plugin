@@ -1,11 +1,8 @@
-/*!
+/**
 * File managing
 * 
 * @version 2.0.0
 * @package https://github.com/sosie-js/file-plugin
-**/
-
-/**
 * @Note this has to be triggered after await editor.isReady.
 * @author sos-productions.com
 * @history

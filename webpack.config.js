@@ -49,8 +49,7 @@ module.exports = (env, argv) => {
       }),
 
       new webpack.BannerPlugin({
-        banner: `file plugin\n\n@version ${VERSION}\n\n@package https://github.com/sosie-js/file-plugin\n@licence MIT\n@author SoSIE <https://sosie.sos-productions.com> \nuses FileSaver.js By Eli Grey, http://eligrey.com\nuses downloadjs v4.21, by dandavis; 2008-2018. [MIT] 
-  */`,
+        banner: `file plugin\n\n@version ${VERSION}\n\n@package https://github.com/sosie-js/file-plugin\n@licence MIT\n@author SoSIE <https://sosie.sos-productions.com> \nuses FileSaver.js By Eli Grey, http://eligrey.com\nuses downloadjs v4.21, by dandavis; 2008-2018. [MIT]`,
       }),
      ],
     output: {
